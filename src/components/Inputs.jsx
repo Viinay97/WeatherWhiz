@@ -22,6 +22,12 @@ function Inputs({ setQuery, units, setUnits }) {
     if (city !== "") setQuery({ q: city });
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSearchClick();
+    }
+  };
+
   const handleLocationClick = () => {
     if (navigator.geolocation) {
       toast.info("Fetching users location.");
@@ -29,7 +35,6 @@ function Inputs({ setQuery, units, setUnits }) {
         toast.success("Location fetched!");
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
-
         setQuery({
           lat,
           lon,
@@ -44,6 +49,7 @@ function Inputs({ setQuery, units, setUnits }) {
         <input
           value={city}
           onChange={(e) => setCity(e.currentTarget.value)}
+          onKeyDown={handleKeyDown}
           type="text"
           placeholder="Search for city...."
           className="text-m md:text-xl rounded font-light p-2 w-full shadow-xl focus:outline-none capitalize placeholder:normal-case"
