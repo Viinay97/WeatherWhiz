@@ -41,7 +41,7 @@ function SecondaryDetails({units, weather: {feels_like, temp_min, temp_max, humi
         },
         { 
             label: 'Humidity', 
-            value: temp_max, 
+            value: humidity, 
             icon: <UilTear className="text-[#FF7F50] text-sm"/>,
             unit: '%',
         },
